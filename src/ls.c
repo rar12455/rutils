@@ -6,17 +6,43 @@
 
 bool a_par = 0;
 bool l_par = 0;
+bool lsout_spaced = 0;
+struct dirent *entry;
+
+#define DIR_COLOR "\033[01;34m%s\033[0m " // DIR_COLOR = BLUE
+#define DIR_COLOR_s " \033[01;34m%s\033[0m " // DIR_COLOR_s = BLUE but spaced for first
+#define DEFAULT_COLOR "%s " // DEFAULT_COLOR = WHITE 
+#define DEFAULT_COLOR_s " %s " // DEFAULT_COLOR_s = WHITE but spaced for first 
+
+void paintdirs(){
+	switch (entry->d_type) {
+		case DT_DIR:	
+			if (lsout_spaced == 1){
+				printf(DIR_COLOR_s,entry->d_name);
+			}
+			else {
+				printf(DIR_COLOR,entry->d_name);
+			}
+			break;
+		default:
+			if (lsout_spaced == 1){
+				printf(DEFAULT_COLOR,entry->d_name);
+			}
+			else {
+				printf(DEFAULT_COLOR_s,entry->d_name);
+			}
+			break;
+	}
+}
 
 void listdir(){
 
-	DIR *dir = opendir(".");
+	DIR *dir = opendir("/home/rar"); // TODO: Make path "user-inputable".
 
 	if (!dir){
 		perror("error opening dir\n");
 		return;
 	}
-
-	struct dirent *entry;
 
 	while ((entry = readdir(dir)) != NULL) {
 
@@ -25,9 +51,10 @@ void listdir(){
 				continue;
 			}
 			if (strcmp(entry->d_name,".") == 0){
-				printf("%s ",entry->d_name);
+				lsout_spaced = 1;
+	  			paintdirs();
 			}
-			printf(" %s ",entry->d_name);
+			paintdirs();
 		}
 		else if (a_par == 1 && l_par == 0){
 			if (strcmp(entry->d_name,".") == 0){
