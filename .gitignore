@@ -1,3 +1,4 @@
 *.un~
 ls
+pwd
 *.out
