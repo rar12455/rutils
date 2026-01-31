@@ -3,8 +3,8 @@
 
 int main(){
 	char pwd[256];
-	if (getcwd(pwd, sizeof(pwd)) != NULL) {
-		printf("%s",pwd);	
+	if (getcwd(pwd,256) != NULL) {
+		printf("%s\n",pwd);	
 		return 0;
 	}
 	else {
