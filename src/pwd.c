@@ -1,7 +1,7 @@
 #include <linux/limits.h> // FOR PATH_MAX
 #include <unistd.h> 
 
-int main(){
+int getpwd(){
 	char pwd[PATH_MAX];
 	if (getcwd(pwd,PATH_MAX)){
 
@@ -23,6 +23,12 @@ int main(){
 
 		return 0;
 	}
+	else {
+		return 1;
+	}
+}
 
-	return 1;
+int main(){
+	getpwd();
+	return 0;
 }
