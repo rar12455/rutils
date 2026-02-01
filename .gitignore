@@ -1,4 +1,5 @@
 *.un~
+*.out
 ls
 pwd
-*.out
+cat
