@@ -2,4 +2,5 @@
 *.out
 ls
 pwd
+wc
 cat
