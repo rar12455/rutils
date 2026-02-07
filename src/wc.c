@@ -3,10 +3,9 @@
 #include <unistd.h>
 #include <string.h>
 
-#define FILE_PATH "/home/rar/rutils/src/wc.c"
 char FILE_CONTENT[PATH_MAX];
 
-void open_file(){
+void open_file(char FILE_PATH[]){
 	FILE *file;
 	file = fopen(FILE_PATH,"r");
 	if (!file){
@@ -28,8 +27,8 @@ void newline_count(char buffer[]){
 	printf("%d",newline_count);
 }
 
-int main(){
-	open_file();
+int main(int argc,char *argv[]){
+	open_file(argv[PATH_MAX]);
 	newline_count(FILE_CONTENT);
 	return 0;
 }

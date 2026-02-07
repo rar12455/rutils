@@ -1,0 +1,237 @@
+GNU COREUTILS REFERENCE
+=======================
+
+This is a comprehensive list of GNU Core Utilities with brief explanations.
+Perfect for reference while implementing your own versions.
+
+FILE OPERATIONS
+---------------
+
+cat         - Concatenate and print files
+tac         - Concatenate and print files in reverse (line by line)
+nl          - Number lines of files
+od          - Dump files in octal and other formats
+base32      - Encode/decode data using base32
+base64      - Encode/decode data using base64
+basenc      - Encode/decode data in various formats
+fmt         - Simple text formatter
+pr          - Convert text files for printing
+fold        - Wrap input lines to fit in specified width
+head        - Output the first part of files
+tail        - Output the last part of files
+split       - Split a file into pieces
+csplit      - Split a file into context-determined pieces
+wc          - Print line, word, and byte counts
+sum         - Checksum and count blocks in a file
+cksum       - Print CRC checksum and byte counts
+b2sum       - Compute and check BLAKE2 message digest
+md5sum      - Compute and check MD5 message digest
+sha1sum     - Compute and check SHA1 message digest
+sha224sum   - Compute and check SHA224 message digest
+sha256sum   - Compute and check SHA256 message digest
+sha384sum   - Compute and check SHA384 message digest
+sha512sum   - Compute and check SHA512 message digest
+sort        - Sort lines of text files
+shuf        - Generate random permutations
+uniq        - Report or omit repeated lines
+comm        - Compare two sorted files line by line
+ptx         - Produce permuted index of file contents
+tsort       - Perform topological sort
+cut         - Remove sections from each line of files
+paste       - Merge lines of files
+join        - Join lines of two files on a common field
+tr          - Translate or delete characters
+expand      - Convert tabs to spaces
+unexpand    - Convert spaces to tabs
+
+
+TEXT OUTPUT
+-----------
+
+echo        - Display a line of text
+printf      - Format and print data
+yes         - Output a string repeatedly until killed
+
+
+FILE NAMING
+-----------
+
+ls          - List directory contents
+dir         - List directory contents (same as ls -C -b)
+vdir        - List directory contents verbosely (same as ls -l -b)
+dircolors   - Color setup for ls
+basename    - Strip directory and suffix from filenames
+dirname     - Strip last component from file name
+pathchk     - Check whether file names are valid or portable
+mktemp      - Create a temporary file or directory
+realpath    - Print the resolved path
+readlink    - Print resolved symbolic links or file names
+
+
+WORKING CONTEXT
+---------------
+
+pwd         - Print working directory
+stty        - Change and print terminal line settings
+printenv    - Print all or part of environment
+tty         - Print the file name of the terminal connected to stdin
+
+
+USER INFORMATION
+----------------
+
+id          - Print user identity
+logname     - Print user's login name
+whoami      - Print effective user ID
+groups      - Print group memberships for user
+users       - Print login names of users currently logged in
+who         - Show who is logged on
+pinky       - Lightweight finger
+
+
+SYSTEM CONTEXT
+--------------
+
+date        - Print or set system date and time
+arch        - Print machine hardware name
+nproc       - Print the number of processing units available
+uname       - Print system information
+hostname    - Show or set the system's host name
+hostid      - Print numeric host identifier
+uptime      - Tell how long the system has been running
+
+
+NUMERIC OPERATIONS
+------------------
+
+factor      - Factor numbers
+numfmt      - Reformat numbers
+seq         - Print numeric sequences
+
+
+FILE PERMISSIONS
+----------------
+
+chmod       - Change file mode bits
+chown       - Change file owner and group
+chgrp       - Change group ownership
+touch       - Change file timestamps
+
+
+FILE MANIPULATION
+-----------------
+
+cp          - Copy files and directories
+dd          - Convert and copy a file
+install     - Copy files and set attributes
+mv          - Move (rename) files
+rm          - Remove files or directories
+shred       - Overwrite files to hide contents
+link        - Call the link function to create a link to a file
+ln          - Make links between files
+mkdir       - Make directories
+mkfifo      - Make FIFOs (named pipes)
+mknod       - Make block or character special files
+rmdir       - Remove empty directories
+unlink      - Call the unlink function to remove specified file
+
+
+DISK USAGE
+----------
+
+df          - Report file system disk space usage
+du          - Estimate file space usage
+stat        - Display file or file system status
+sync        - Synchronize cached writes to persistent storage
+truncate    - Shrink or extend the size of a file
+
+
+PRINTING
+--------
+
+lpr         - Send files to printer (not always part of coreutils)
+
+
+REDIRECTION
+-----------
+
+tee         - Read from stdin and write to stdout and files
+
+
+CONDITIONS
+----------
+
+false       - Do nothing, unsuccessfully (exit status 1)
+true        - Do nothing, successfully (exit status 0)
+test        - Check file types and compare values
+[           - Synonym for test (requires closing ])
+expr        - Evaluate expressions
+
+
+FILE NAME MANIPULATION
+----------------------
+
+pathchk     - Check file name validity and portability
+
+
+PROCESS CONTROL
+---------------
+
+kill        - Send signals to processes
+sleep       - Delay for a specified amount of time
+timeout     - Run a command with a time limit
+nohup       - Run a command immune to hangups
+
+
+MODIFIED COMMAND INVOCATION
+---------------------------
+
+chroot      - Run command with different root directory
+env         - Run a program in a modified environment
+nice        - Run a command with modified scheduling priority
+runcon      - Run command with specified SELinux context
+stdbuf      - Run command with modified I/O buffering
+
+
+PROCESS INFORMATION
+-------------------
+
+nice        - Modify process priority
+
+
+DELAYING
+--------
+
+sleep       - Delay for specified amount of time
+
+
+VERSIONING
+----------
+
+All coreutils have:
+--help      - Display help and exit
+--version   - Output version information and exit
+
+
+NOTES
+-----
+
+1. These utilities form the core of any Unix-like operating system
+2. They're designed to do one thing well and work together via pipes
+3. Most accept standard input and produce standard output
+4. They follow the Unix philosophy of small, composable tools
+5. Many have POSIX-specified behavior with GNU extensions
+6. Options typically use both short (-a) and long (--all) forms
+
+IMPLEMENTATION TIPS
+-------------------
+
+When implementing your own versions:
+- Start with simpler utilities (cat, echo, true, false)
+- Focus on core functionality first, add options later
+- Handle errors gracefully
+- Support reading from stdin when no files specified
+- Test with edge cases (empty files, large files, special characters)
+- Consider buffering for performance
+- Follow POSIX standards where applicable
+- Add --help and --version early
